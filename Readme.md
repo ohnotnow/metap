@@ -2,6 +2,8 @@
 
 This project uses the Pydantic library to define models and implement an AI-based system for generating task-specific prompts. It integrates a structured workflow for creating prompts based on user input and a customizable metaprompt template.
 
+(Entirely a PoC based on the original templates from [disler](https://gist.github.com/disler/29ff18823670098c26fa370ad802fa96))
+
 ## Features
 
 - Dynamically generates AI prompts based on user input.
