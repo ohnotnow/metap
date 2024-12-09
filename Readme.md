@@ -21,8 +21,8 @@ Ensure the following are installed on your system:
 
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
-   cd <repository_name>
+   git clone https://github.com/ohnotnow/metap
+   cd metap
    ```
 
 2. Set up a virtual environment:
