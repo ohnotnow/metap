@@ -52,6 +52,10 @@ Ensure the following are installed on your system:
    ```bash
    python main.py
    ```
+4. If you want to use a different model, you can specify it as an argument:
+   ```bash
+   python main.py --model openai:gpt-4o-mini
+   ```
 
 ### User Input Creation
 

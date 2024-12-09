@@ -1,18 +1,19 @@
 import os
+import argparse
 from pydantic_ai import Agent
 from pydantic import BaseModel, Field
 
 class PromptResponse(BaseModel):
     prompt: str = Field(description="The new prompt to accomplish the task.")
 
-def create_prompt(metaprompt: str = "", user_input: str = "") -> PromptResponse:
+def create_prompt(metaprompt: str = "", user_input: str = "", model: str = "openai:gpt-4o-mini") -> PromptResponse:
     if not metaprompt:
         metaprompt = get_metaprompt()
     if not user_input:
         user_input = get_user_input()
     prompt = metaprompt.format(user_input=user_input)
     agent = Agent(
-        model="openai:gpt-4o-mini",
+        model=model,
         result_type=PromptResponse,
     )
     return agent.run_sync(prompt)
@@ -60,9 +61,12 @@ def get_user_input():
 
     return create_user_input()
 
-def main():
-    response = create_prompt()
+def main(model: str = "openai:gpt-4o-mini"):
+    response = create_prompt(model=model)
     print(response.data.prompt)
 
 if __name__ == "__main__":
-    main()
+    argp = argparse.ArgumentParser()
+    argp.add_argument("--model", type=str, default="openai:gpt-4o-mini")
+    args = argp.parse_args()
+    main(args.model)
